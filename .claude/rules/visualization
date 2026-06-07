@@ -1,0 +1,76 @@
+# Interactive Visualization
+
+Generate or update `outputs/modified/code-table.html`. It must work by opening the file directly in a browser (no server, no external dependencies — inline all CSS and JS).
+
+## First run vs. subsequent runs
+
+**Check first:** does `outputs/modified/code-table.html` already exist?
+
+- **If no:** generate the full file (template + data block, as described below).
+- **If yes:** only regenerate the data block (see "Updating the data block" below) — do not rewrite the template.
+
+---
+
+## File structure
+
+The file has two parts, separated by markers that must never be removed:
+
+```html
+<!-- DATA:START -->
+<script>
+const DATA = { ... };
+</script>
+<!-- DATA:END -->
+
+<!-- The rest of the file: layout, tabs, JS logic, CSS — never regenerated after first run -->
+```
+
+The DATA object must include:
+- `codes` — array of `{ id, label, type: "predefined"|"emergent", definition }`
+- `quotes` — array of `{ id, transcriptId, speaker, timestamp, text, tags: [{ codeId, confidence: "strong"|"moderate"|"tentative" }] }` — **omit rationale; it is available in the output markdown files**
+- `unassigned` — array of `{ transcriptId, timestamp, text }`
+- `transcripts` — array of `{ id, participant }`
+
+---
+
+## Updating the data block
+
+On runs after the first, replace only the content between `<!-- DATA:START -->` and `<!-- DATA:END -->` with a freshly built DATA object reflecting the current state of `outputs/modified/`. Leave everything outside those markers untouched.
+
+---
+
+## UI requirements (template — written once)
+
+The visualization must include three tabs — **Overview**, **By Transcript**, and **Unassigned Turns** — sharing a single state so edits in any tab are immediately reflected in all others.
+
+**Overview tab:**
+1. **Summary bar** — total codes, total quotes, total transcripts; updates live
+2. **Interactive table** — sortable by any column; filterable by type and confidence; clicking a row expands to show all quotes with per-quote edit controls (see below)
+
+**By Transcript tab:**
+- Transcript selector buttons; switching updates the view without page reload
+- Per-transcript summary (participant, codes used, tag count)
+- Expandable code sections showing all quotes for that transcript
+- Same per-quote edit controls as Overview; changes immediately update Overview tab
+
+**Unassigned Turns tab:**
+- Lists all turns from the Unassigned Turns table in the tagged output that have not yet been assigned any code
+- Badge showing count of unassigned turns; updates to 0 when all are assigned
+- Per-turn card with assign controls (see below)
+- When a tag is assigned, the turn disappears from this tab and appears under the assigned code in both Overview and By Transcript
+
+**Per-quote edit controls** (inline on every quote card in Overview and By Transcript):
+- **Remove tag** — unassigns this tag from the quote; quote is not deleted
+- **Reassign tag** — dropdown of all available codes; selecting one moves the quote to that code
+- **New tag** — inline text input + submit button directly on the quote card; creates a new emergent code and assigns this quote to it
+- All three controls appear on every quote card; no section-level add area
+
+**Per-turn assign controls** (on each unassigned turn card):
+- **Assign tag** — dropdown of all available codes
+- **New tag** — inline input to create and assign a new emergent code
+- Submitting either moves the turn into the assignments state and removes it from the unassigned list
+
+**Export:**
+- A prominent "Export changes" button downloads a JSON file (`tag-edits.json`) listing every add, remove, and reassign action taken, with transcript ID, turn reference, old tag, and new tag
+
+Use only vanilla JS. No CDN links.

@@ -1,0 +1,51 @@
+# Output conventions
+
+**Save all outputs as a markdown report**
+
+---
+
+## 1. Summary table
+
+Show a full code table at the top of the document, sorted by frequency (descending):
+
+| Code | Definition | # Quotes |  
+|------|------------|----------| 
+| code_name | brief noun phrase (≤10 words) | N |  
+
+---
+
+## 2. Per-code sections
+
+Create a `<details>` foldable block for each code:
+
+```
+<details>
+<summary>**Code Name** (N quotes)</summary>
+
+...quotes...
+
+</details>
+```
+
+---
+
+## 3. Quotes within each section
+
+- Display each quote as a blockquote with an interviewee ID label:
+
+  > "Quote text here."
+  > — P01
+
+- If a quote is assigned more than one code, flag it inline:
+  `[MULTI-CODE: Code A, Code B]`
+
+  Example:
+
+  > "Quote text here." `[MULTI-CODE: Survey Goals, Validation]`
+  > — P03
+
+---
+
+## 4. Definitions
+
+Keep code definitions to a brief noun phrase (≤10 words). Avoid full sentences.

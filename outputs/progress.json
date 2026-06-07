@@ -1,0 +1,44 @@
+{
+  "completed": [
+    "dovetail-transcript-2026-04-23.vtt",
+    "dovetail-transcript-2026-04-23 (1).vtt"
+  ],
+  "in_progress": null,
+  "study_note": "Two separate studies — codebooks are independent. Transcript 1 = Study A, Transcript 2 = Study B. Do not merge emergent codes across studies.",
+  "emergent_codes_study_a": [
+    "Platform Consolidation Drive",
+    "Compliance-Blocked LLM Use",
+    "Human-Led Pre-Filtering",
+    "Task Delegation — Language Translation",
+    "Task Delegation — Question Drafting",
+    "Task Delegation — Response Summarization",
+    "Iterative Prompt Tuning Friction",
+    "Persistent Context Expectation",
+    "Cross-Tool Automation Appeal",
+    "Purpose-Driven Tool Selection",
+    "Manual Reminder Automation Gap",
+    "Prior Embedded AI Dissatisfaction",
+    "Integration Adoption Concern",
+    "Multi-Group Survey Differentiation"
+  ],
+  "emergent_codes_study_b": [
+    "Business Context Prerequisite",
+    "Cross-System Data Access as Analysis Prerequisite",
+    "Human Drafts, AI Refines",
+    "AI as Strategic Survey Advisor",
+    "LLM Integration as Orchestration Hub",
+    "Survey Process Continuity Memory",
+    "PII Selective Forgetting Requirement",
+    "Data Enrichment Bottleneck",
+    "Proactive AI Monitoring",
+    "Corporate Authorization Barrier",
+    "Embedded AI Domain Specialization Value",
+    "Feature Completeness as Switching Criterion",
+    "Historical Survey Performance as AI Context",
+    "Ideal State — End-to-End Survey Wizard"
+  ],
+  "pending_registry_review": {
+    "near_duplicate_candidates": [],
+    "retirement_candidates": []
+  }
+}

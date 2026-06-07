@@ -1,0 +1,26 @@
+# Apply Tag Edits Phase
+
+**Trigger:** Run this phase when `tag-edits.json` is present anywhere under `outputs/`. Check before starting the normal review workflow — if the file exists, run this phase first, then continue with the standard checks on the patched files.
+
+## Steps
+
+1. **Locate** `tag-edits.json` — search `outputs/` recursively; if not found, skip this phase entirely
+2. **Load** the JSON and the affected transcript files from `outputs/modified/`
+3. **Apply each edit in timestamp order:**
+
+   | Action | What to do |
+   |--------|-----------|
+   | `remove` | Find the quote under `codeId` in the transcript file; remove that quote block from the code's `<details>` section; decrement the code's quote count in the Code Table |
+   | `reassign` | Move the quote block from `fromCode` section to `toCode` section; update both codes' quote counts; update or add the `[MULTI-CODE: ...]` label on the quote if applicable |
+   | `restore` | Reverse a previous remove: re-insert the quote block; increment the count |
+   | `add_code` | Add a new `<details>` section for the new code at the bottom of the file; add a row to the Code Table |
+
+4. **Recount** — after all edits are applied, recount quotes per code from the actual quote blocks and correct the Code Table header row (do not rely on incrementing alone)
+5. **Save** patched files back to `outputs/modified/` — overwrite in place
+6. **Archive** the processed `tag-edits.json` by appending `-applied-[date]` to its filename (e.g. `tag-edits-applied-2026-03-28.json`) so it is not reprocessed on the next run
+
+## Rules
+
+- Never touch files in `outputs/analysis/` — only `outputs/modified/`
+- If a quoted turn cannot be found under the specified code (e.g. it was already moved), log a warning and skip that edit rather than erroring
+- Preserve all rationale, confidence indicators, and multi-code labels on moved quotes

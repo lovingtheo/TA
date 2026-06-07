@@ -1,0 +1,19 @@
+# Predefined codes
+
+## 1. Predefined codes
+
+| Code | Definition |
+|------|------------|
+| Survey Goals | Tailoring insights to stated survey objectives |
+| Validation | Need to verify or cross-check AI-generated outputs |
+
+## 2. New code development
+
+**Quality bar:** A new code must meet all four criteria:
+- Captures a latent or explicit interviewee need not covered by existing codes 
+- Appears in ≥2 quotes or ≥2 unique interviewees (unless highly distinctive) 
+- Named as a brief noun phrase (≤10 words, title case, no verbs)
+
+**Do not create a new code if:**
+- The quote fits an existing code with minor stretching
+- The theme is a one-off remark with no pattern

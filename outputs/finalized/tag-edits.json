@@ -1,0 +1,31 @@
+{
+  "exportedAt": "2026-03-28T18:05:59.076Z",
+  "edits": [
+    {
+      "action": "remove",
+      "assignmentId": "a01",
+      "transcript": "transcript-01",
+      "turnRef": "T-02",
+      "codeId": "survey_goals",
+      "timestamp": "2026-03-28T18:05:03.490Z"
+    },
+    {
+      "action": "reassign",
+      "assignmentId": "a08",
+      "transcript": "transcript-01",
+      "turnRef": "T-13",
+      "fromCode": "survey_goals",
+      "toCode": "validation",
+      "timestamp": "2026-03-28T18:05:14.396Z"
+    },
+    {
+      "action": "reassign",
+      "assignmentId": "a06",
+      "transcript": "transcript-01",
+      "turnRef": "T-11",
+      "fromCode": "survey_goals",
+      "toCode": "validation",
+      "timestamp": "2026-03-28T18:05:19.020Z"
+    }
+  ]
+}
